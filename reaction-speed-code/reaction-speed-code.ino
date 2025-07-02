@@ -9,6 +9,7 @@
   int buzzer = 7;
   int button1 = 13;
   int button2 = 6;
+  int startButton = 5;
   bool buttonPressed = 0;
 
 // setup code
@@ -25,6 +26,8 @@ void setup() {
   // defines buttons as switches
   pinMode(button1, INPUT_PULLUP);
   pinMode(button2, INPUT_PULLUP);
+  pinMode(startButton, INPUT_PULLUP);
+
 
   // allows for randomization
   randomSeed(analogRead(A0));
@@ -33,7 +36,10 @@ void setup() {
 
 // main code which runs repeatedly
 void loop() {
-  
+
+// checks if the start button has been pressed - the game will not start otherwise
+if (digitalRead(startButton) == 0)  
+{
 
   digitalWrite(green, HIGH); // turns on the green LED
   digitalWrite(buzzer, HIGH); // turns on the buzzer
@@ -81,5 +87,7 @@ digitalWrite(blue1, LOW); // turns off first blue LED
 digitalWrite(blue2, LOW); // turns off second blue LED
 buttonPressed = 0; // sets the buttonPressed flag low 
 delay(1000); // 1 sec delay
+
+}
 
 }
